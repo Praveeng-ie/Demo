@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="IndianEagle Test Suite">
+  <test  name="Home Page" preserve-order="true" thread-count="5" verbose="2">
+    <classes>
+      <class name="com.indianEagle.tests.HomePageTests">
+      </class>
+    </classes>
+  </test>
+  <test  name="Search Result Page" preserve-order="true" thread-count="5" verbose="2">
+    <classes>
+      <class name="com.indianEagle.tests.SearchResultPageTests">
+      </class>
+    </classes>
+  </test>
+</suite>
