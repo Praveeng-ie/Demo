@@ -10,12 +10,13 @@ import com.indianeagle.enums.TripType;
 
 public class HomePageTests extends TestBase
 {
+
 	@Test(dataProvider = "dataProvider")
 	public void doFlightSearch(String tripType, String fromAirport, String toAirport,String cabin,String adults)
 			throws InterruptedException {
 		homePage.doFlightSearch(Enum.valueOf(TripType.class, tripType), fromAirport,
 				toAirport,Enum.valueOf(CabinType.class, cabin),Enum.valueOf(AdultsCount.class, adults));
-		System.out.println("Demo purpose was wrong");
+
 				System.out.println("Demo purpose");
 	}
 	@Test
@@ -24,6 +25,7 @@ public class HomePageTests extends TestBase
 		homePage.testDates();
 		Thread.sleep(5000);
 	}
+
 	
 	
 	@Test
