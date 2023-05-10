@@ -24,4 +24,10 @@ public class HomePageTests extends TestBase
 		homePage.testDates();
 		Thread.sleep(5000);
 	}
+	@Test
+	public void testTheDatess() throws InterruptedException
+	{
+		homePage.testDates();
+		Thread.sleep(5000);
+	}
 }
