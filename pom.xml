@@ -29,7 +29,7 @@
 					</suiteXmlFiles>
 			        <systemPropertyVariables>
 
-			            <url>${baseurl}</url>
+			          
 			            <browser>${browser}</browser>
 
 			     
