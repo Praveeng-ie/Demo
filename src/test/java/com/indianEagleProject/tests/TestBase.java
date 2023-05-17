@@ -7,12 +7,15 @@ import java.lang.reflect.Method;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -45,12 +48,21 @@ public class TestBase {
 		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
-
+	@Parameters("browser")
 	@BeforeMethod
-	public void testSetup() throws FileNotFoundException, IOException {
+	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
-		driver = WebDriverUtil.createDriver
-				(testConfig.getProperty("browsertype"));
+		if(browser.equalsIgnoreCase("firefox"))
+		{
+			
+			driver=new FirefoxDriver();
+			
+		}
+		else if(browser.equalsIgnoreCase("chrome"))
+		{
+			
+			driver=new ChromeDriver();
+		}
 		driver.get(testConfig.getProperty("baseurl"));
 		homePage = new HomePage(driver);
 	}

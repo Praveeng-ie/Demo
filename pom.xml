@@ -18,6 +18,10 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>indianEagle.xml</suiteXmlFile>
 					</suiteXmlFiles>
+			        <systemPropertyVariables>
+			            <browser>${browser}</browser>
+			        </systemPropertyVariables>
+    
 				</configuration>
 			</plugin>
 		</plugins>
