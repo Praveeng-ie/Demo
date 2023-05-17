@@ -28,7 +28,7 @@
 						<suiteXmlFile>indianEagle.xml</suiteXmlFile>
 					</suiteXmlFiles>
 			        <systemPropertyVariables>
-			            <browser>${browser}</browser>
+			            <url>${baseurl}</url>
 			        </systemPropertyVariables>
     
 				</configuration>

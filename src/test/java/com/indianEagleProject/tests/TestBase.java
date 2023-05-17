@@ -7,8 +7,6 @@ import java.lang.reflect.Method;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -48,22 +46,13 @@ public class TestBase {
 		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
-	@Parameters("browser")
+	@Parameters("baseurl")
 	@BeforeMethod
 	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
-		if(browser.equalsIgnoreCase("firefox"))
-		{
-			
-			driver=new FirefoxDriver();
-			
-		}
-		else if(browser.equalsIgnoreCase("chrome"))
-		{
-			
-			driver=new ChromeDriver();
-		}
-		driver.get(testConfig.getProperty("baseurl"));
+		driver = WebDriverUtil.createDriver
+				(testConfig.getProperty("browsertype"));
+		driver.get("baseurl");
 		homePage = new HomePage(driver);
 	}
 	
