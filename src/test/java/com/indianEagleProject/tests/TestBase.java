@@ -46,13 +46,13 @@ public class TestBase {
 		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
-	@Parameters("baseurl")
+	@Parameters("browser")
 	@BeforeMethod
 	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
 		driver = WebDriverUtil.createDriver
-				(testConfig.getProperty("browsertype"));
-		driver.get("baseurl");
+				(testConfig.getProperty(browser));
+		driver.get(testConfig.getProperty("baseurl"));
 		homePage = new HomePage(driver);
 	}
 	
