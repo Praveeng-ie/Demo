@@ -148,7 +148,6 @@ public class HomePage extends PageBase {
 		fillAirportInput(txtFromAirport, "HYD");
 		fillAirportInput(txtToAirport, "SFO");
 		dateDeparture.click();
-		datePickleftArrow.click();
 		String departureMonth="JUNE";
 		String departureYear="2023";
 		String departureDay="24";
