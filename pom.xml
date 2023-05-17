@@ -28,8 +28,11 @@
 						<suiteXmlFile>indianEagle.xml</suiteXmlFile>
 					</suiteXmlFiles>
 			        <systemPropertyVariables>
+
 			            <url>${baseurl}</url>
 			            <browser>${browser}</browser>
+
+			     
 			        </systemPropertyVariables>
     
 				</configuration>

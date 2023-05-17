@@ -50,9 +50,12 @@ public class TestBase {
 	@BeforeMethod
 	public void testSetup(String baseurl,String browser) throws FileNotFoundException, IOException {
 	
-		driver = WebDriverUtil.createDriver
-				(browser);
+		driver = WebDriverUtil.createDriver(browser);
+
 		driver.get(baseurl);
+
+		driver.get(baseurl);
+
 		homePage = new HomePage(driver);
 	}
 	
