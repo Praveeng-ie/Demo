@@ -29,23 +29,19 @@ public class WebDriverUtil
 		
 		if(browser.equalsIgnoreCase("Firefox"))
 		{
-			// Firefox Browser Setup - Change the driver exe path based on your local machine path
-			System.setProperty("webdriver.gecko.driver", "D:\\Software\\chromedriver_win32\\geckodriver.exe");
-			//FirefoxOptions fo = new FirefoxOptions();
+			
 			driver = new FirefoxDriver();
 		}
 		else if(browser.equalsIgnoreCase("Chrome"))
 		{
-			// Chrome Browser Setup - Change the driver exe path based on your local machine path
+			
 			ChromeOptions co = new ChromeOptions();
 			co.addArguments("--remote-allow-origins=*");
 			driver = new ChromeDriver(co);
 		}
 		else if(browser.equalsIgnoreCase("Edge"))
 		{
-			// Edge Browser Setup - Change the driver exe path based on your local machine path
-			System.setProperty("webdriver.edge.driver", "D:\\Software\\chromedriver_win32\\msedgedriver.exe");
-			//EdgeOptions eo = new EdgeOptions();
+			
 			driver = new EdgeDriver();
 		}
 		else
