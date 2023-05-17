@@ -4,7 +4,7 @@
   
   <test  name="Search Result Page" preserve-order="true" thread-count="5" verbose="2">
     <classes>
-      <class name="com.indianEagle.tests.SearchResultPageTests">
+      <class name="com.indianEagleProject.tests.SearchResultPageTests">
       </class>
     </classes>
   </test>
