@@ -51,7 +51,7 @@ public class TestBase {
 	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
 		driver = WebDriverUtil.createDriver
-				(testConfig.getProperty(browser));
+				(browser);
 		driver.get(testConfig.getProperty("baseurl"));
 		homePage = new HomePage(driver);
 	}
