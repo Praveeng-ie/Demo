@@ -38,12 +38,12 @@ public class TestBase {
 	protected static ExtentReports extentReport;
 	protected static ThreadLocal<ExtentTest> erTestThread = new ThreadLocal<ExtentTest>();
 	protected ExtentTest erTest;
-	@Parameters("InputFile")
+	
 	@BeforeSuite
-	public void suiteSetup(String InputFile) throws FileNotFoundException, IOException
+	public void suiteSetup() throws FileNotFoundException, IOException
 	{
 		testConfig = new Properties();
-		testConfig.load(new FileInputStream(InputFile));	
+		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
 	@Parameters("browser")
@@ -73,7 +73,7 @@ public class TestBase {
 	@DataProvider
 	public Object[][] dataProvider(Method method)
 	{
-		String InputFile;
+		
 		DataDrivenManager ddm = new DataDrivenManager(testconfig.properties("mastertestdatafile"));
 		return 
 			ddm.getTestCaseDataSets(testconfig.properties("mastertestdatasheet"),method.getName());
