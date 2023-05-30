@@ -40,17 +40,17 @@ public class TestBase {
 	protected ExtentTest erTest;
 	@Parameters("InputFile")
 	@BeforeSuite
-	public void suiteSetup(String InputFile) throws FileNotFoundException, IOException
+	public void suiteSetup() throws FileNotFoundException, IOException
 	{
 		testConfig = new Properties();
-		testConfig.load(new FileInputStream(InputFile));	
+		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
 	@Parameters("browser")
 	@BeforeMethod
 	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
-		driver = WebDriverUtil.createDriver(browser);
+		driver = WebDriverUtil.createDriver("chrome");
 
 		driver.get(testConfig.getProperty("baseurl"));
 
@@ -69,14 +69,13 @@ public class TestBase {
 	{
 		WebDriverUtil.quitDriver(driver);
 	}
+	@Parameters("indianEagle")
 	@DataProvider
 	public Object[][] dataProvider(Method method)
 	{
-		DataDrivenManager ddm = new DataDrivenManager(
-									testConfig.getProperty("mastertestdatafile"));
+		DataDrivenManager ddm = new DataDrivenManager("indianEagle");
 		return 
-			ddm.getTestCaseDataSets(
-							testConfig.getProperty("mastertestdatasheet"),method.getName());
+			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
 	}
 	
 
