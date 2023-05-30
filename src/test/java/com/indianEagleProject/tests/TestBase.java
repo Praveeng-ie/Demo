@@ -54,7 +54,6 @@ public class TestBase {
 
 		driver.get(testConfig.getProperty("baseurl"));
 
-		
 
 		homePage = new HomePage(driver);
 	}

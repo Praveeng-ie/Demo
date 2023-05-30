@@ -41,8 +41,7 @@ public class WebDriverUtil
 		}
 		else if(browser.equalsIgnoreCase("Edge"))
 		{
-			
-			
+
 			driver = new EdgeDriver();
 		}
 		else
