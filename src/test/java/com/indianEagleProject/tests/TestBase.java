@@ -69,12 +69,12 @@ public class TestBase {
 	{
 		WebDriverUtil.quitDriver(driver);
 	}
-	@Parameters("indianEagle")
+	@Parameters("InputFile")
 	@DataProvider
 	public Object[][] dataProvider(Method method)
 	{
-		 String indianEagle;
-		DataDrivenManager ddm = new DataDrivenManager(indianEagle);
+		 String InputFile;
+		DataDrivenManager ddm = new DataDrivenManager(InputFile);
 		return 
 			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
 	}
