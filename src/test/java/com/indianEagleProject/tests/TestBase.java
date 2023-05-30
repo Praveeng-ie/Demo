@@ -69,14 +69,14 @@ public class TestBase {
 	{
 		WebDriverUtil.quitDriver(driver);
 	}
-	//@Parameters("InputFile")
+	@Parameters("InputFile")
 	@DataProvider
 	public Object[][] dataProvider(Method method)
 	{
-		
-		DataDrivenManager ddm = new DataDrivenManager(testConfig.getProperty("mastertestdatafile"));
+		String InputFile;
+		DataDrivenManager ddm = new DataDrivenManager(InputFile);
 		return 
-			ddm.getTestCaseDataSets(testConfig.getProperty("mastertestdatasheet"),method.getName());
+			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
 	}
 	
 
