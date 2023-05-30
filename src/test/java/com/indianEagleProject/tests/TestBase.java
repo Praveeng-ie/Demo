@@ -71,9 +71,9 @@ public class TestBase {
 	}
 	@Parameters("indianEagle")
 	@DataProvider
-	public Object[][] dataProvider(Method method,String indianEagle)
+	public Object[][] dataProvider(Method method)
 	{
-		 
+		 String indianEagle;
 		DataDrivenManager ddm = new DataDrivenManager(indianEagle);
 		return 
 			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
