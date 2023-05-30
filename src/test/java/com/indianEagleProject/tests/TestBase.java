@@ -33,7 +33,7 @@ public class TestBase {
 	private WebDriver driver;
 	
 	protected HomePage homePage;
-	
+	 static String InputFile;
 	protected static Properties testConfig;
 	protected static ExtentReports extentReport;
 	protected static ThreadLocal<ExtentTest> erTestThread = new ThreadLocal<ExtentTest>();
@@ -73,7 +73,7 @@ public class TestBase {
 	@DataProvider
 	public Object[][] dataProvider(Method method)
 	{
-		 String InputFile;
+		
 		DataDrivenManager ddm = new DataDrivenManager(InputFile);
 		return 
 			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
