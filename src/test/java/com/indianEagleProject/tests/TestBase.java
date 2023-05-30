@@ -38,23 +38,23 @@ public class TestBase {
 	protected static ExtentReports extentReport;
 	protected static ThreadLocal<ExtentTest> erTestThread = new ThreadLocal<ExtentTest>();
 	protected ExtentTest erTest;
-	
+	@Parameters("InputFile")
 	@BeforeSuite
-	public void suiteSetup() throws FileNotFoundException, IOException
+	public void suiteSetup(String InputFile) throws FileNotFoundException, IOException
 	{
 		testConfig = new Properties();
-		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
+		testConfig.load(new FileInputStream(InputFile));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
 	@Parameters("browser")
 	@BeforeMethod
-	public void testSetup(String baseurl,String browser) throws FileNotFoundException, IOException {
+	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
 		driver = WebDriverUtil.createDriver(browser);
 
-		driver.get(baseurl);
+		driver.get(testConfig.getProperty("baseurl"));
 
-		driver.get(baseurl);
+		
 
 		homePage = new HomePage(driver);
 	}
