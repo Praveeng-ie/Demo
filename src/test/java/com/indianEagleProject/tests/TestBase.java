@@ -38,7 +38,7 @@ public class TestBase {
 	protected static ExtentReports extentReport;
 	protected static ThreadLocal<ExtentTest> erTestThread = new ThreadLocal<ExtentTest>();
 	protected ExtentTest erTest;
-	@Parameters("InputFile")
+	
 	@BeforeSuite
 	public void suiteSetup() throws FileNotFoundException, IOException
 	{
@@ -50,7 +50,7 @@ public class TestBase {
 	@BeforeMethod
 	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
-		driver = WebDriverUtil.createDriver("chrome");
+		driver = WebDriverUtil.createDriver(browser);
 
 		driver.get(testConfig.getProperty("baseurl"));
 
@@ -71,9 +71,10 @@ public class TestBase {
 	}
 	@Parameters("indianEagle")
 	@DataProvider
-	public Object[][] dataProvider(Method method)
+	public Object[][] dataProvider(Method method,String indianEagle)
 	{
-		DataDrivenManager ddm = new DataDrivenManager("indianEagle");
+		 
+		DataDrivenManager ddm = new DataDrivenManager(indianEagle);
 		return 
 			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
 	}
