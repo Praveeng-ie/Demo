@@ -7,7 +7,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.level>1.8</jdk.level>
 		<maven.compiler.target>3.5.1</maven.compiler.target>
-		
+		<Url>false</Url>
 	</properties>
 	<build>
 		<plugins>
@@ -34,27 +34,12 @@
 			        <systemPropertyVariables>
 						
 			            <browser>${browser}</browser>
-					  
+					  <Url>${Url}</Url>
 			        </systemPropertyVariables>
     
 				</configuration>
 			</plugin>
-			<plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-resources-plugin</artifactId>
-      <version>3.2.0</version>
-      <configuration>
-        <resources>
-          <resource>
-            <directory>src/main/resources</directory>
-            <includes>
-              <include>test.properties</include>
-            </includes>
-            <filtering>false</filtering>
-          </resource>
-        </resources>
-      </configuration>
-    </plugin>
+			
 		</plugins>
 	</build>
 	<dependencies>

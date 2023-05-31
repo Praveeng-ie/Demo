@@ -3,6 +3,7 @@ package com.indianEagleProject.tests;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.Properties;
 //TEST
@@ -39,7 +40,7 @@ public class TestBase {
 	protected static ExtentReports extentReport;
 	protected static ThreadLocal<ExtentTest> erTestThread = new ThreadLocal<ExtentTest>();
 	protected ExtentTest erTest;
-	
+	private String url;
 	@BeforeSuite
 	public void suiteSetup() throws FileNotFoundException, IOException
 	{
@@ -51,7 +52,12 @@ public class TestBase {
 	@BeforeMethod
 	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
-		String url = System.getProperty("url");
+		try (InputStream inputStream = getClass().getResourceAsStream("test.properties")) {
+			testConfig.load(inputStream);
+        }
+		 boolean useIndianUrl = Boolean.parseBoolean(System.getenv("URL"));
+		url = useIndianUrl ? testConfig.getProperty("indian.url") : testConfig.getProperty("ieagle.url");
+       
 		driver = WebDriverUtil.createDriver(browser);
 
 		driver.get(url);
