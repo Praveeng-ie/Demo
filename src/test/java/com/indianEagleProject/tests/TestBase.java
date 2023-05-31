@@ -56,7 +56,7 @@ public class TestBase {
 			testConfig.load(inputStream);
         }
 		 boolean useIndianUrl = Boolean.parseBoolean(System.getenv("URL"));
-		url = useIndianUrl ? testConfig.getProperty("indian.url") : testConfig.getProperty("ieagle.url");
+		url = useIndianUrl ? testConfig.getProperty("indianeagle.url") : testConfig.getProperty("ieagle.url");
        
 		driver = WebDriverUtil.createDriver(browser);
 
