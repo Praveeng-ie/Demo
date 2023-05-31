@@ -74,7 +74,7 @@ public class TestBase {
 
 	@DataProvider
 
-    public Object[][] testData() throws IOException {
+    public Object[][] dataProvider() throws IOException {
         String excelFilePath = System.getenv("InputFile"); // Retrieve file path from Jenkins environment variable
         String sheetName = "TestDataSheet1"; // Name of the sheet in the Excel file
 
