@@ -48,7 +48,7 @@ public class TestBase {
 		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
-	@Parameters("browser")
+	@Parameters({"browser","url"})
 	@BeforeMethod
 	public void testSetup(String browser,String url) throws FileNotFoundException, IOException, InterruptedException {
 		 url = System.getProperty("url");
