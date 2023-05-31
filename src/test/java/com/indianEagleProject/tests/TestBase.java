@@ -50,8 +50,8 @@ public class TestBase {
 	}
 	@Parameters("browser")
 	@BeforeMethod
-	public void testSetup(String browser,boolean Url ) throws FileNotFoundException, IOException, InterruptedException {
-		
+	public void testSetup(String browser ) throws FileNotFoundException, IOException, InterruptedException {
+		boolean Url = false;
 		String url = Url ? System.getProperty("indianeagle.url") : System.getProperty("ieagleurl.url");
 	    
 	    driver = WebDriverUtil.createDriver(browser);
