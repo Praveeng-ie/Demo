@@ -34,7 +34,7 @@
 			        <systemPropertyVariables>
 						
 			            <browser>${browser}</browser>
-					  <url>${url}</url>
+					 
 			        </systemPropertyVariables>
     
 				</configuration>
