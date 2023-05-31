@@ -49,11 +49,11 @@ public class TestBase {
 	}
 	@Parameters({"browser","url"})
 	@BeforeMethod
-	public void testSetup(String browser) throws FileNotFoundException, IOException {
+	public void testSetup(String browser, String url) throws FileNotFoundException, IOException {
 	
 		driver = WebDriverUtil.createDriver(browser);
 
-		driver.get("url");
+		driver.get(url);
 
 
 		homePage = new HomePage(driver);
