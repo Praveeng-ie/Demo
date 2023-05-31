@@ -47,13 +47,13 @@ public class TestBase {
 		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
-	@Parameters("browser")
+	@Parameters({"browser","url"})
 	@BeforeMethod
 	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
 		driver = WebDriverUtil.createDriver(browser);
 
-		driver.get(testConfig.getProperty("baseurl"));
+		driver.get("url");
 
 
 		homePage = new HomePage(driver);
@@ -71,27 +71,16 @@ public class TestBase {
 		WebDriverUtil.quitDriver(driver);
 	}
 	
-
 	@DataProvider
-    public Object[][] dataProvider() throws IOException {
-        String excelFilePath = System.getProperty("InputFile"); // Retrieve file path from Jenkins environment variable
-        String sheetName = "TestDataSheet1"; // Name of the sheet in the Excel file
-
-        return ExcelDataReader.readDataFromExcel(excelFilePath, sheetName);
-    }
-	/*@DataProvider
 	public Object[][] dataProvider(Method method)
 	{
 
-		 
-		DataDrivenManager ddm = new DataDrivenManager("indianEagle.xlsx");
-
-		DataDrivenManager ddm = new DataDrivenManager(testconfig.properties("mastertestdatafile"));
+		DataDrivenManager ddm = new DataDrivenManager(testConfig.getProperty("mastertestdatafile"));
 
 			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
 	
-			return ddm.getTestCaseDataSets(testconfig.properties("mastertestdatasheet"),method.getName());
-	}*/
+			return ddm.getTestCaseDataSets(testConfig.getProperty("mastertestdatasheet"),method.getName());
+	}
 	
 
 	@AfterMethod

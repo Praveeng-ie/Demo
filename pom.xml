@@ -31,7 +31,8 @@
 			        <systemPropertyVariables>
 						
 			            <browser>${browser}</browser>
-					    <InputFile>${InputFile}</InputFile>
+			            <url>${url}</url>
+					   
 			     
 			        </systemPropertyVariables>
     
