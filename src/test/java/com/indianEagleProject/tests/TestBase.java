@@ -55,7 +55,7 @@ public class TestBase {
 	    String url = "www.ieagle.com"; 
 
 	    if (useIndianUrl != null && Boolean.parseBoolean(useIndianUrl)) {
-	        url = "www.indian.com"; 
+	        url = "www.indianeagle.com"; 
 	    }
 		driver = WebDriverUtil.createDriver(browser);
 
