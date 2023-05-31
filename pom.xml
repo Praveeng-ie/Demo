@@ -7,7 +7,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.level>1.8</jdk.level>
 		<maven.compiler.target>3.5.1</maven.compiler.target>
-		<Url>false</Url>
+		<url>false</url>
 	</properties>
 	<build>
 		<plugins>
@@ -34,7 +34,7 @@
 			        <systemPropertyVariables>
 						
 			            <browser>${browser}</browser>
-					  <Url>${Url}</Url>
+					  <url>${url}</url>
 			        </systemPropertyVariables>
     
 				</configuration>
