@@ -50,10 +50,11 @@ public class TestBase {
 	}
 	@Parameters({"browser","url"})
 	@BeforeMethod
-	public void testSetup(String browser) throws FileNotFoundException, IOException, InterruptedException {
-         String url=  System.getProperty("url");
+	public void testSetup(String browser,String url) throws FileNotFoundException, IOException, InterruptedException {
+          url=  System.getProperty("url");
+          Thread.sleep(5000);
 	    driver = WebDriverUtil.createDriver(browser);
-	    Thread.sleep(5000);
+	   
 		driver.get(url);
 
 
