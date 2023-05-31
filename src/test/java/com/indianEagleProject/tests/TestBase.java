@@ -41,10 +41,10 @@ public class TestBase {
 	protected ExtentTest erTest;
 	@Parameters("InputFile")
 	@BeforeSuite
-	public void suiteSetup(String InputFile) throws FileNotFoundException, IOException
+	public void suiteSetup() throws FileNotFoundException, IOException
 	{
 		testConfig = new Properties();
-		new FileInputStream(InputFile);	
+		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
 	@Parameters("browser")
