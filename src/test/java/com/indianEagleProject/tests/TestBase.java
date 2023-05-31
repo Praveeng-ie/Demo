@@ -19,6 +19,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.indianEagleProject.pages.HomePage;
 import com.indianEagleProject.util.DataDrivenManager;
+import com.indianEagleProject.util.ExcelDataReader;
 import com.indianEagleProject.util.ExtentManager;
 import com.indianEagleProject.util.WebDriverUtil;
 
@@ -70,14 +71,22 @@ public class TestBase {
 		WebDriverUtil.quitDriver(driver);
 	}
 	
+	
 	@DataProvider
+    public Object[][] testData() throws IOException {
+        String excelFilePath = System.getenv("InputFile"); // Retrieve file path from Jenkins environment variable
+        String sheetName = "TestDataSheet1"; // Name of the sheet in the Excel file
+
+        return ExcelDataReader.readDataFromExcel(excelFilePath, sheetName);
+    }
+	/*@DataProvider
 	public Object[][] dataProvider(Method method)
 	{
 		 
 		DataDrivenManager ddm = new DataDrivenManager("indianEagle.xlsx");
 		return 
 			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
-	}
+	}*/
 	
 
 	@AfterMethod
