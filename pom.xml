@@ -7,7 +7,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.level>1.8</jdk.level>
 		<maven.compiler.target>3.5.1</maven.compiler.target>
-		 <InputFile>/IndianEagleProject/indianEagle.xlsx</InputFile>
+		
+  			<url.value1>www.indian.com</url.value1>
+ 			 <url.value2>www.ieagle.com</url.value2>
 	</properties>
 	<build>
 		<plugins>
@@ -31,9 +33,7 @@
 			        <systemPropertyVariables>
 						
 			            <browser>${browser}</browser>
-			            <url>${url}</url>
 					   
-			     
 			        </systemPropertyVariables>
     
 				</configuration>

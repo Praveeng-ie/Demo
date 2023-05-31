@@ -47,10 +47,11 @@ public class TestBase {
 		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
-	@Parameters({"browser","url"})
+	@Parameters("browser")
 	@BeforeMethod
-	public void testSetup(String browser, String url) throws FileNotFoundException, IOException {
+	public void testSetup(String browser) throws FileNotFoundException, IOException {
 	
+		String url = System.getProperty("url");
 		driver = WebDriverUtil.createDriver(browser);
 
 		driver.get(url);
