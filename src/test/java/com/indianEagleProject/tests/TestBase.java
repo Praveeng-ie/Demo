@@ -48,19 +48,13 @@ public class TestBase {
 		testConfig.load(new FileInputStream(TEST_CONFIG_FILE_PATH));	
 		extentReport = ExtentManager.createInstance(EXTENT_REPORT_FILE_PATH);
 	}
-	@Parameters("browser")
+	@Parameters({"browser","url"})
 	@BeforeMethod
 	public void testSetup(String browser) throws FileNotFoundException, IOException, InterruptedException {
          String url=  System.getProperty("url");
-         if (url.startsWith("${") && url.endsWith("}")) {
-             // Retrieve the URL from the system property
-             String urlProperty = System.getProperty(url.substring(2, url.length() - 1));
-             driver = WebDriverUtil.createDriver(browser);
-             driver.get(urlProperty);
-         } else {
-             driver = WebDriverUtil.createDriver(browser);
-             driver.get(url);
-         }
+	    driver = WebDriverUtil.createDriver(browser);
+	    Thread.sleep(5000);
+		driver.get(url);
 
 
 		homePage = new HomePage(driver);
