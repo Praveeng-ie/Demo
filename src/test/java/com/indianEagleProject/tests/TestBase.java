@@ -32,14 +32,14 @@ public class TestBase {
 	private static final String EXTENT_REPORT_FILE_PATH = "AutomationReport.html";
 	
 	private WebDriver driver;
-	String InputFile;
+	
 	protected HomePage homePage;
 	// static String InputFile;
 	protected static Properties testConfig;
 	protected static ExtentReports extentReport;
 	protected static ThreadLocal<ExtentTest> erTestThread = new ThreadLocal<ExtentTest>();
 	protected ExtentTest erTest;
-	@Parameters("InputFile")
+	
 	@BeforeSuite
 	public void suiteSetup() throws FileNotFoundException, IOException
 	{
@@ -73,9 +73,8 @@ public class TestBase {
 	
 
 	@DataProvider
-
     public Object[][] dataProvider() throws IOException {
-        String excelFilePath = System.getenv("InputFile"); // Retrieve file path from Jenkins environment variable
+        String excelFilePath = System.getProperty("InputFile"); // Retrieve file path from Jenkins environment variable
         String sheetName = "TestDataSheet1"; // Name of the sheet in the Excel file
 
         return ExcelDataReader.readDataFromExcel(excelFilePath, sheetName);
@@ -90,8 +89,8 @@ public class TestBase {
 		DataDrivenManager ddm = new DataDrivenManager(testconfig.properties("mastertestdatafile"));
 
 			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
-	}
-			ddm.getTestCaseDataSets(testconfig.properties("mastertestdatasheet"),method.getName());
+	
+			return ddm.getTestCaseDataSets(testconfig.properties("mastertestdatasheet"),method.getName());
 	}*/
 	
 
