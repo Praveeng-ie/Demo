@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Properties;
-
+//TEST
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -34,7 +34,7 @@ public class TestBase {
 	private WebDriver driver;
 	String InputFile;
 	protected HomePage homePage;
-	
+	// static String InputFile;
 	protected static Properties testConfig;
 	protected static ExtentReports extentReport;
 	protected static ThreadLocal<ExtentTest> erTestThread = new ThreadLocal<ExtentTest>();
@@ -71,8 +71,9 @@ public class TestBase {
 		WebDriverUtil.quitDriver(driver);
 	}
 	
-	
+
 	@DataProvider
+
     public Object[][] testData() throws IOException {
         String excelFilePath = System.getenv("InputFile"); // Retrieve file path from Jenkins environment variable
         String sheetName = "TestDataSheet1"; // Name of the sheet in the Excel file
@@ -82,10 +83,15 @@ public class TestBase {
 	/*@DataProvider
 	public Object[][] dataProvider(Method method)
 	{
+
 		 
 		DataDrivenManager ddm = new DataDrivenManager("indianEagle.xlsx");
-		return 
+
+		DataDrivenManager ddm = new DataDrivenManager(testconfig.properties("mastertestdatafile"));
+
 			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
+	}
+			ddm.getTestCaseDataSets(testconfig.properties("mastertestdatasheet"),method.getName());
 	}*/
 	
 
