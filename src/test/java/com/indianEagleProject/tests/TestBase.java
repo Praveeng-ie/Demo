@@ -51,13 +51,12 @@ public class TestBase {
 	@Parameters("browser")
 	@BeforeMethod
 	public void testSetup(String browser) throws FileNotFoundException, IOException {
-		Properties  properties = new Properties();
-		try (InputStream inputStream = getClass().getResourceAsStream("test.properties")) {
-			properties.load(inputStream);
-        }
-		 boolean useIndianUrl = Boolean.parseBoolean(System.getenv("url"));
-		url = useIndianUrl ? properties.getProperty("indianeagle.url") : properties.getProperty("ieagle.url");
-       
+		String useIndianUrl = System.getProperty("url");
+	    String url = "www.ieagle.com"; 
+
+	    if (useIndianUrl != null && Boolean.parseBoolean(useIndianUrl)) {
+	        url = "www.indian.com"; 
+	    }
 		driver = WebDriverUtil.createDriver(browser);
 
 		driver.get(url);
