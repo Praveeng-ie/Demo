@@ -40,7 +40,7 @@ public class TestBase {
 	protected static ExtentReports extentReport;
 	protected static ThreadLocal<ExtentTest> erTestThread = new ThreadLocal<ExtentTest>();
 	protected ExtentTest erTest;
-	
+	private String url;
 	@BeforeSuite
 	public void suiteSetup() throws FileNotFoundException, IOException
 	{
@@ -50,17 +50,17 @@ public class TestBase {
 	}
 	@Parameters("browser")
 	@BeforeMethod
-	public void testSetup(String browser,String url) throws FileNotFoundException, IOException, InterruptedException {
-		
-		if (url.startsWith("${") && url.endsWith("}")) {
-		        // Retrieve the URL from the system property
-		        String urlProperty = System.getProperty(url.substring(2, url.length() - 1));
-		        driver = WebDriverUtil.createDriver(browser);
-		        driver.get(urlProperty);
-		    } else {
-		        driver = WebDriverUtil.createDriver(browser);
-		        driver.get(url);
-		    }
+	public void testSetup(String browser) throws FileNotFoundException, IOException, InterruptedException {
+         String url=  System.getProperty("url");
+         if (url.startsWith("${") && url.endsWith("}")) {
+             // Retrieve the URL from the system property
+             String urlProperty = System.getProperty(url.substring(2, url.length() - 1));
+             driver = WebDriverUtil.createDriver(browser);
+             driver.get(urlProperty);
+         } else {
+             driver = WebDriverUtil.createDriver(browser);
+             driver.get(url);
+         }
 
 
 		homePage = new HomePage(driver);
