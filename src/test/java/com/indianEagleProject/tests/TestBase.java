@@ -56,10 +56,10 @@ public class TestBase {
 		 Thread.sleep(5000);
 		String url;
 		if (Boolean.parseBoolean(System.getProperty("url"))) {
-		    url = "www.indianeagle.com";
+		    url = "https://www.indianeagle.com";
 		    driver.get(url);
 		} else {
-		    url = "www.ieagle.com";
+		    url = "https://www.ieagle.com";
 		    driver.get(url);
 		}
 		
