@@ -52,11 +52,17 @@ public class TestBase {
 	@BeforeMethod
 	public void testSetup(String browser ) throws FileNotFoundException, IOException, InterruptedException {
 		
+		 driver = WebDriverUtil.createDriver(browser);
+		 Thread.sleep(5000);
+		String url;
+		if (Boolean.parseBoolean(System.getProperty("url"))) {
+		    url = "www.indianeagle.com";
+		    driver.get(url);
+		} else {
+		    url = "www.ieagle.com";
+		    driver.get(url);
+		}
 		
-		String url = System.getProperty("selected.url");
-	    driver = WebDriverUtil.createDriver(browser);
-	   
-		driver.get(url);
 
 
 		homePage = new HomePage(driver);

@@ -9,33 +9,9 @@
 		<maven.compiler.target>3.5.1</maven.compiler.target>
 		 
 	</properties>
-	<profiles>
-    <profile>
-        <id>indianeagle</id>
-        <activation>
-            <property>
-                <name>url</name>
-                <value>true</value>
-            </property>
-        </activation>
-        <properties>
-            <selected.url>www.indianeagle.com</selected.url>
-        </properties>
-    </profile>
-    <profile>
-        <id>ieagle</id>
-        <activation>
-            <property>
-                <name>url</name>
-                <value>false</value>
-            </property>
-        </activation>
-        <properties>
-            <selected.url>www.ieagle.com</selected.url>
-        </properties>
-    </profile>
-</profiles>
-
+	
+   
+   
 	<build>
 		<plugins>
 			<plugin>
@@ -61,7 +37,7 @@
 			        <systemPropertyVariables>
 						
 			            <browser>${browser}</browser>
-					 	
+					 	<url>${url}</url>
 			        </systemPropertyVariables>
     
 				</configuration>
