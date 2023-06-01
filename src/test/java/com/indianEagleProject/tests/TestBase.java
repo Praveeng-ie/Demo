@@ -84,11 +84,11 @@ public class TestBase {
 	public Object[][] dataProvider(Method method)
 	{
 
-		DataDrivenManager ddm = new DataDrivenManager(testConfig.getProperty("mastertestdatafile"));
+		DataDrivenManager ddm = new DataDrivenManager(System.getProperty("excelFile"));
 
-			ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
+			
 	
-			return ddm.getTestCaseDataSets(testConfig.getProperty("mastertestdatasheet"),method.getName());
+			return ddm.getTestCaseDataSets("TestDataSheet1",method.getName());
 	}
 	
 
