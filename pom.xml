@@ -7,9 +7,35 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.level>1.8</jdk.level>
 		<maven.compiler.target>3.5.1</maven.compiler.target>
-		 <indianeagle.url>${indianeagleurl}</indianeagle.url>
- 		 <ieagle.url>${ieagleurl}</ieagle.url>
+		 
 	</properties>
+	<profiles>
+    <profile>
+        <id>indianeagle</id>
+        <activation>
+            <property>
+                <name>url</name>
+                <value>true</value>
+            </property>
+        </activation>
+        <properties>
+            <selected.url>www.indianeagle.com</selected.url>
+        </properties>
+    </profile>
+    <profile>
+        <id>ieagle</id>
+        <activation>
+            <property>
+                <name>url</name>
+                <value>false</value>
+            </property>
+        </activation>
+        <properties>
+            <selected.url>www.ieagle.com</selected.url>
+        </properties>
+    </profile>
+</profiles>
+
 	<build>
 		<plugins>
 			<plugin>
